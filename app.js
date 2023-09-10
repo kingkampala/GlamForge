@@ -2,21 +2,21 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
 //middlewares
 app.use(cors());
 app.use(express.json());
+dotenv.config();
 
 const api = process.env.PORT;
+const DB_URI = process.env.MONGO_URI;
 
 //database
-const DB_URI = 'mongodb+srv://kampala:Kampala2810@cluster0.aixuzga.mongodb.net/?retryWrites=true&w=majority?ssl=true'
-
- mongoose
+mongoose
     .connect(DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        ssl: true,
         dbName: 'a-p-i_db'
     })
     .then(() => {
@@ -27,7 +27,6 @@ const DB_URI = 'mongodb+srv://kampala:Kampala2810@cluster0.aixuzga.mongodb.net/?
     })
     
 //server
-const PORT = process.env.PORT || 2810;
-app.listen(PORT, () => {
+app.listen(2810, () => {
     console.log('server is running excellently!')
 });

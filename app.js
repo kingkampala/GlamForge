@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const mongodb = require('mongodb');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
 //middlewares
 app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 dotenv.config();
 
-const api = process.env.PORT;
+const port = process.env.PORT || 8000;
 const DB_URI = process.env.MONGO_URI;
 
 //database
@@ -24,9 +26,13 @@ mongoose
     })
     .catch((err) => {
         console.error('database connection error', err);
-    })
+    });
+
+app.get('/', (req, res) => {
+    res.send('backend api tester');
+});
     
 //server
-app.listen(2810, () => {
-    console.log('server is running excellently!')
+app.listen(port, () => {
+    console.log('server is running excellently')
 });

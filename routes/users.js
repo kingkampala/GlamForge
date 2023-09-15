@@ -8,9 +8,9 @@ const mongoose = require('mongoose');
 router.get('/', async (req, res) => {
     try {
         const User = mongoose.model('User');
-        
+
         const users = await User.find().select('-passwordHash -secret');
-        res.json(users);
+        res.status(201).json(users);
     } catch (error) {
         console.error('Error fetching user:', error);
         res.status(500).json({ error: 'server error, cannot fetch user.', details: error.message });

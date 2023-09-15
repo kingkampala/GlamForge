@@ -94,4 +94,18 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    const userId = req.params.id;
+    try {
+        const User = mongoose.model('User');
+
+        const users = await User.findByIdAndDelete(userId);
+        console.log('user deleted successfully');
+        res.status(201).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'server error', details: error.message });
+    }
+})
+
 module.exports = router;

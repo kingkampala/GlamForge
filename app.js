@@ -15,6 +15,7 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
+//env
 const port = process.env.API_URI;
 const DB_URI = process.env.MONGO_URI;
 
@@ -22,12 +23,6 @@ const DB_URI = process.env.MONGO_URI;
 const usersRoutes = require('./routes/users');
 
 app.use(`${port}/users`, usersRoutes);
-
-/*app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
-});*/
-
 
 //database
 mongoose

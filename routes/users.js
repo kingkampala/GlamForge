@@ -55,4 +55,43 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    const userId = req.params.id;
+    const updatedData = req.body;
+
+    ({
+            name: req.body.name,
+            email: req.body.email,
+            username: req.body.username,
+            passwordHash: bcrypt.hashSync(req.body.password, 12),
+            secret: req.body.secret,
+            phone: req.body.phone,
+            isAdmin: req.body.isAdmin,
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country
+    });
+
+    //checks if user provided a new passsword
+    if(updatedData.password){
+        updatedData.passwordHash = bcrypt.hashSync(updatedData.password, 12);
+    } else{
+        delete updatedData.password;
+    }
+
+    try {
+        const User = mongoose.model('User');
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updatedData, { new: true });
+
+        if (!updatedUser) {
+            return res.status(404).json({ error: 'User not found' });
+          }
+        res.status(201).json(updatedUser);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'internal server error', details: error.message });
+    }
+});
+
 module.exports = router;

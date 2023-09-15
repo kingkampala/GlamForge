@@ -12,8 +12,21 @@ router.get('/', async (req, res) => {
         const users = await User.find().select('-passwordHash -secret');
         res.status(201).json(users);
     } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error(error);
         res.status(500).json({ error: 'server error, cannot fetch user.', details: error.message });
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    const userId = req.params.id;
+    try {
+        const User = mongoose.model('User');
+
+        const users = await User.findById(userId).select('-passwordHash -secret');
+        res.status(201).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'server error, user not found.', details: error.message });
     }
 })
 
@@ -37,7 +50,7 @@ router.post('/', async (req, res) => {
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
-        console.error('Error creating user:', error);
+        console.error(error);
         res.status(500).json({ error: 'server error, cannot create user.', details: error.message });
     }
 });

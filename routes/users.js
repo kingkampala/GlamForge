@@ -55,6 +55,46 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    try {
+        const User = mongoose.model('User');
+
+        const { email, username, password } = req.body;
+        if (!email || !username || !password) {
+             return res.status(400).json({ error: 'email, username and password are needed'})
+        }
+
+        //check if user exist
+        const user = await User.findOne({ $or: [{ email }, { username }] });
+
+        if (!user) {
+            return res.status(400).json({ error: 'invalid user' });
+        }
+
+        // check if email matches
+        if (email && user.email !== email) {
+            return res.status(400).json({ error: 'invalid email' });
+        }
+
+        // check if username matches
+        if (username && user.username !== username) {
+            return res.status(400).json({ error: 'invalid username' });
+        }
+
+        //check password validity
+        const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+
+        if (!isPasswordValid) {
+             return res.status(400).json({ error: 'invalid password' });
+        }
+
+            res.status(200).json({ success: 'login successful', user });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'internal server error', details: error.message });
+    }
+});
+
 router.put('/:id', async (req, res) => {
     const userId = req.params.id;
     const updatedData = req.body;
@@ -75,7 +115,7 @@ router.put('/:id', async (req, res) => {
     //checks if user provided a new passsword
     if(updatedData.password){
         updatedData.passwordHash = bcrypt.hashSync(updatedData.password, 12);
-    } else{
+    } else {
         delete updatedData.password;
     }
 

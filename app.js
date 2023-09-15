@@ -42,10 +42,6 @@ mongoose
     .catch((err) => {
         console.error('database connection error', err);
     });
-
-/*app.get('/', (req, res) => {
-    res.send('backend api tester');
-});*/
     
 //server
 app.listen(8000, () => {

@@ -95,6 +95,56 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/register', async (req, res) => {
+    try {
+        const User = mongoose.model('User');
+
+        const { email, username } = req.body;
+
+        // check if email exists
+        const doesEmailExist = async (email) => {
+        const user = await User.findOne({ email });
+        return user !== null;
+      };
+
+      // check if username exists
+        const doesUsernameExist = async (username) => {
+        const user = await User.findOne({ username });
+        return user !== null;
+      };
+
+        const emailExists = await doesEmailExist(email);
+        const usernameExists = await doesUsernameExist(username);
+
+        console.log(`Does email '${email}' exist? ${emailExists}`);
+        console.log(`Does username '${username}' exist? ${usernameExists}`);
+
+        if (emailExists || usernameExists) {
+            return res.status(400).json({ error: 'email & username already exists.' });
+        }
+
+        const newUser = new User({
+            name: req.body.name,
+            email,
+            username,
+            passwordHash: bcrypt.hashSync(req.body.password, 12),
+            secret: req.body.secret,
+            phone: req.body.phone,
+            isAdmin: req.body.isAdmin,
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country
+        })
+
+        const savedUser = await newUser.save();
+
+        res.status(200).json({ success: 'registration successful', savedUser });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'server error, registration unsuccessful.', details: error.message });
+    }
+});
+
 router.put('/:id', async (req, res) => {
     const userId = req.params.id;
     const updatedData = req.body;

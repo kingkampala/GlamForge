@@ -17,6 +17,18 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/total', async (req, res) => {
+    try {
+        const User = mongoose.model('User');
+        
+        const totalUsers = await User.countDocuments();
+        res.status(201).json(totalUsers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'server error, cannot get total users.', details: error.message });
+    }
+  });
+
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
     try {

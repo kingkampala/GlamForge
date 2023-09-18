@@ -22,6 +22,7 @@ const DB_URI = process.env.MONGO_URI;
 //routes
 const usersRoutes = require('./routes/users');
 
+//app.use(`${port}/total`, usersRoutes);
 app.use(`${port}/users`, usersRoutes);
 
 //database

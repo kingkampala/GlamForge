@@ -1,6 +1,5 @@
-const { User } = require('../models/user');
+const {User} = require('../models/user');
 const express = require('express');
-const app = express();
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 const mongoose = require('mongoose');

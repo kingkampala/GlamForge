@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const mongodb = require('mongodb');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
@@ -21,8 +20,10 @@ const DB_URI = process.env.MONGO_URI;
 
 //routes
 const usersRoutes = require('./routes/users');
+const categoriesRoutes = require('./routes/categories');
 
 app.use(`${port}/users`, usersRoutes);
+app.use(`${port}/categories`, categoriesRoutes);
 
 //database
 mongoose

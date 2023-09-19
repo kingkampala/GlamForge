@@ -72,8 +72,7 @@ router.delete('/:id', async (req, res) => {
         const Category = mongoose.model('Category');
 
         const category = await Category.findByIdAndDelete(userId);
-        console.log('category deleted successfully');
-        res.status(201).json(category);
+        res.json(category);
     } catch (error) {
         res.status(500).json({ error: 'internal server error', details: error.message });
     }

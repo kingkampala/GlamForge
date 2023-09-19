@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'server error, cannot fetch user.', details: error.message });
     }
-})
+});
 
 router.get('/total', async (req, res) => {
     try {
@@ -26,7 +26,7 @@ router.get('/total', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'server error, cannot get total users.', details: error.message });
     }
-  });
+});
 
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'server error, user not found.', details: error.message });
     }
-})
+});
 
 router.post('/', async (req, res) => {
     try {
@@ -190,7 +190,7 @@ router.put('/:id', async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(userId, updatedData, { new: true });
 
         if (!updatedUser) {
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(404).json({ error: 'user not found' });
           }
         res.status(201).json(updatedUser);
     } catch (error) {
@@ -211,6 +211,6 @@ router.delete('/:id', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'server error', details: error.message });
     }
-})
+});
 
 module.exports = router;

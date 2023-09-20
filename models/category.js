@@ -9,11 +9,11 @@ const categorySchema = mongoose.Schema({
     type: String,
     required: true
   },
-  colour: {
-    type: String,
+  subcategory: {
+    type: [String],
     required: true
   }
-});
+}, { timestamps: true });
 
 const Category = mongoose.model('Category', categorySchema);
 

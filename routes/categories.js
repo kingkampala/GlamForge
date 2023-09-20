@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         const newCategory = new Category({
             name: req.body.name,
             description: req.body.description,
-            colour: req.body.colour
+            subcategory: req.body.subcategory
       });
 
         const savedCategory = await newCategory.save();
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
     ({
             name: req.body.name,
             description: req.body.description,
-            colour: req.body.colour
+            subcategory: req.body.subcategory
     })
     try{
         const Category = mongoose.model('Category');
@@ -78,4 +78,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-  module.exports = router;
+module.exports = router;

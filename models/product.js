@@ -44,7 +44,7 @@ const productSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
 const Product = mongoose.model('Product', productSchema);
 

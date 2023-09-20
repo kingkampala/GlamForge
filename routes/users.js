@@ -33,8 +33,8 @@ router.get('/:id', async (req, res) => {
     try {
         const User = mongoose.model('User');
 
-        const users = await User.findById(userId).select('-passwordHash -secret');
-        res.status(201).json(users);
+        const user = await User.findById(userId).select('-passwordHash -secret');
+        res.status(201).json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'server error, user not found.', details: error.message });
@@ -204,9 +204,9 @@ router.delete('/:id', async (req, res) => {
     try {
         const User = mongoose.model('User');
 
-        const users = await User.findByIdAndDelete(userId);
+        const user = await User.findByIdAndDelete(userId);
         console.log('user deleted successfully');
-        res.status(201).json(users);
+        res.status(201).json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'server error', details: error.message });

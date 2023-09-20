@@ -21,9 +21,11 @@ const DB_URI = process.env.MONGO_URI;
 //routes
 const usersRoutes = require('./routes/users');
 const categoriesRoutes = require('./routes/categories');
+const productsRoutes = require('./routes/products');
 
 app.use(`${port}/users`, usersRoutes);
 app.use(`${port}/categories`, categoriesRoutes);
+app.use(`${port}/products`, productsRoutes);
 
 //database
 mongoose

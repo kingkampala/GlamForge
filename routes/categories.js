@@ -32,11 +32,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const userId = req.params.id;
+    const categoryId = req.params.id;
     try{
         const Category = mongoose.model('Category');
 
-        const category = await Category.findById(userId);
+        const category = await Category.findById(categoryId);
         res.json(category);
     } catch (error) {
         res.status(500).json({ error: 'category not found', details: error.message });
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const userId = req.params.id;
+    const categoryId = req.params.id;
     const updatedData = req.body;
 
     ({
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     try{
         const Category = mongoose.model('Category');
 
-        const category = await Category.findByIdAndUpdate(userId, updatedData, { new: true });
+        const category = await Category.findByIdAndUpdate(categoryId, updatedData, { new: true });
 
         if (!category) {
             return res.status(404).json({ error: 'category not found' });
@@ -67,11 +67,11 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    const userId = req.params.id;
+    const categoryId = req.params.id;
     try{
         const Category = mongoose.model('Category');
 
-        const category = await Category.findByIdAndDelete(userId);
+        const category = await Category.findByIdAndDelete(categoryId);
         res.json(category);
     } catch (error) {
         res.status(500).json({ error: 'internal server error', details: error.message });

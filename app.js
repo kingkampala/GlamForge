@@ -22,12 +22,14 @@ const DB_URI = process.env.MONGO_URI;
 const usersRoutes = require('./routes/users');
 const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
-const orderitemRoutes = require('./routes/orderitems');
+const orderitemsRoutes = require('./routes/orderitems');
+const ordersRoutes = require('./routes/orders');
 
 app.use(`${port}/users`, usersRoutes);
 app.use(`${port}/categories`, categoriesRoutes);
 app.use(`${port}/products`, productsRoutes);
-app.use(`${port}/orderitems`, orderitemRoutes);
+app.use(`${port}/orderitems`, orderitemsRoutes);
+app.use(`${port}/orders`, ordersRoutes);
 
 //database
 mongoose

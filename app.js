@@ -2,17 +2,20 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const jwtAuth = require('./auth/jwt');
+const handleError = require('./auth/errhand');
 
 //middlewares
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
-dotenv.config();
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+app.use(jwtAuth());
+app.use(handleError);
 
 //env
 const port = process.env.API_URI;
@@ -24,12 +27,14 @@ const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
 const orderitemsRoutes = require('./routes/orderitems');
 const ordersRoutes = require('./routes/orders');
+const cartsRoutes = require('./routes/carts');
 
 app.use(`${port}/users`, usersRoutes);
 app.use(`${port}/categories`, categoriesRoutes);
 app.use(`${port}/products`, productsRoutes);
 app.use(`${port}/orderitems`, orderitemsRoutes);
 app.use(`${port}/orders`, ordersRoutes);
+app.use(`${port}/carts`, cartsRoutes);
 
 //database
 mongoose

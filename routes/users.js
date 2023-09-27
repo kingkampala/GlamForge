@@ -1,13 +1,13 @@
-const {User} = require('../models/user');
+const User = require('../models/user');
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
-const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
+const secret = process.env.JWT_SECRET;
 
 router.get('/', async (req, res) => {
     try {
-        const User = mongoose.model('User');
-
         const users = await User.find().select('-passwordHash -secret');
         res.status(201).json(users);
     } catch (error) {
@@ -18,8 +18,6 @@ router.get('/', async (req, res) => {
 
 router.get('/total', async (req, res) => {
     try {
-        const User = mongoose.model('User');
-        
         const totalUsers = await User.countDocuments();
         res.status(201).json(totalUsers);
     } catch (error) {
@@ -31,8 +29,6 @@ router.get('/total', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
     try {
-        const User = mongoose.model('User');
-
         const user = await User.findById(userId).select('-passwordHash -secret');
         res.status(201).json(user);
     } catch (error) {
@@ -43,8 +39,6 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const User = mongoose.model('User');
-
         const newUser = new User({
             name: req.body.name,
             email: req.body.email,
@@ -68,8 +62,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const User = mongoose.model('User');
-
         const { email, username, password } = req.body;
         if (!email || !username || !password) {
              return res.status(400).json({ error: 'email, username and password are needed'})
@@ -99,7 +91,16 @@ router.post('/login', async (req, res) => {
              return res.status(400).json({ error: 'invalid password' });
         }
 
-            res.status(200).json({ success: 'login successful', user });
+        const token = jwt.sign(
+            {
+                userId: user._id,
+                isAdmin: user.isAdmin
+            },
+            secret,
+            {expiresIn : '5m'}
+        )
+
+        res.status(200).json({ success: 'login successful', user, token });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'internal server error', details: error.message });
@@ -108,8 +109,6 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const User = mongoose.model('User');
-
         const { email, username } = req.body;
 
         // check if email exists
@@ -185,8 +184,6 @@ router.put('/:id', async (req, res) => {
     }
 
     try {
-        const User = mongoose.model('User');
-
         const updatedUser = await User.findByIdAndUpdate(userId, updatedData, { new: true });
 
         if (!updatedUser) {
@@ -202,8 +199,6 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const userId = req.params.id;
     try {
-        const User = mongoose.model('User');
-
         const user = await User.findByIdAndDelete(userId);
         console.log('user deleted successfully');
         res.status(201).json(user);

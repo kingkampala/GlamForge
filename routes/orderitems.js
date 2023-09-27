@@ -1,12 +1,9 @@
-const {Orderitem} = require('../models/orderitem');
+const Orderitem = require('../models/orderitem');
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 
 router.post('/', async (req, res) => {
     try {
-        const Orderitem = mongoose.model('Orderitem');
-
         const orderitem = new Orderitem({ 
           product: req.body.product,
           quantity: req.body.quantity
@@ -20,8 +17,6 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const Orderitem = mongoose.model('Orderitem');
-
         const orderitems = await Orderitem.find();
         res.json(orderitems);
     } catch (error) {
@@ -32,8 +27,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const orderitemId = req.params.id;
     try {
-        const Orderitem = mongoose.model('Orderitem');
-
         const orderitem = await Orderitem.findById(orderitemId);
         if (!orderitem) return res.status(404).json({ error: 'order item not found' });
         res.json(orderitem);
@@ -51,8 +44,6 @@ router.put('/:id', async (req, res) => {
           quantity: req.body.quantity
     })
     try {
-        const Orderitem = mongoose.model('Orderitem');
-
         const updatedOrderItem = await Orderitem.findByIdAndUpdate(orderitemId, updatedData, { new: true });
         res.json(updatedOrderItem);
     } catch (error) {
@@ -64,8 +55,6 @@ router.delete('/:id', async (req, res) => {
     const orderitemId = req.params.id;
 
     try {
-        const Orderitem = mongoose.model('Orderitem');
-
         await Orderitem.findByIdAndDelete(orderitemId);
         res.json({ message: 'order item deleted successfully' });
     } catch (error) {

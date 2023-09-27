@@ -1,12 +1,9 @@
-const {Category} = require('../models/category');
+const Category = require('../models/category');
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 
 router.post('/', async (req, res) => {
     try {
-        const Category = mongoose.model('Category');
-
         const newCategory = new Category({
             name: req.body.name,
             description: req.body.description,
@@ -22,8 +19,6 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try{
-        const Category = mongoose.model('Category');
-
         const category = await Category.find();
         res.json(category);
     } catch (error) {
@@ -34,8 +29,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const categoryId = req.params.id;
     try{
-        const Category = mongoose.model('Category');
-
         const category = await Category.findById(categoryId);
         res.json(category);
     } catch (error) {
@@ -53,8 +46,6 @@ router.put('/:id', async (req, res) => {
             subcategory: req.body.subcategory
     })
     try{
-        const Category = mongoose.model('Category');
-
         const category = await Category.findByIdAndUpdate(categoryId, updatedData, { new: true });
 
         if (!category) {
@@ -69,8 +60,6 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const categoryId = req.params.id;
     try{
-        const Category = mongoose.model('Category');
-
         const category = await Category.findByIdAndDelete(categoryId);
         res.json(category);
     } catch (error) {

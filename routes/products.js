@@ -1,12 +1,9 @@
-const {Product} = require('../models/product');
+const Product = require('../models/product');
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 
 router.post('/', async (req, res) => {
     try {
-        const Product = mongoose.model('Product');
-    
         const product = new Product({
             name: req.body.name,
             brand: req.body.brand,
@@ -29,8 +26,6 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const Product = mongoose.model('Product');
-
         const products = await Product.find();
         res.json(products);
       } catch (error) {
@@ -40,8 +35,6 @@ router.get('/', async (req, res) => {
 
 router.get('/total', async (req, res) => {
     try {
-        const Product = mongoose.model('Product');
-        
         const totalProducts = await Product.countDocuments();
         res.status(201).json(totalProducts);
     } catch (error) {
@@ -52,8 +45,6 @@ router.get('/total', async (req, res) => {
 
 router.get('/total-featured', async (req, res) => {
     try {
-        const Product = mongoose.model('Product');
-
         const totalFeaturedProducts = await Product.countDocuments({ featured: true });
         res.json({ totalFeaturedProducts });
     } catch (error) {
@@ -64,8 +55,6 @@ router.get('/total-featured', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const productId = req.params.id;
     try {
-        const Product = mongoose.model('Product');
-
         const product = await Product.findById(productId);
         res.json(product);
       } catch (error) {
@@ -91,8 +80,6 @@ router.put('/:id', async (req, res) => {
     });
 
     try {
-        const Product = mongoose.model('Product');
-
         const updatedProduct = await Product.findByIdAndUpdate(productId, updatedData, { new: true, });
         res.json(updatedProduct);
     } catch (error) {
@@ -103,8 +90,6 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const productId = req.params.id;
     try {
-        const Product = mongoose.model('Product');
-
         await Product.findByIdAndRemove(productId);
         res.json({ message: 'product deleted successfully' });
       } catch (error) {

@@ -48,6 +48,33 @@ router.get('/', verifyToken, async (req, res) => {
     }
 });
 
+router.get('/total', verifyToken, async (req, res) => {
+    const userId = req.user ? req.user.userId : null;
+    if (!userId) {
+        //return res.status(500).json({ error: 'user information not found in request' });
+    }
+
+    try {
+        const cart = await Cart.findOne({ user: userId });
+
+        if (!cart) {
+            return res.status(404).json({ error: 'cart not found' });
+        }
+
+        let total = 0;
+        if (cart.cartItems && Array.isArray(cart.cartItems)) {
+            for (const item of cart.cartItems) {
+                total += item.quantity * item.product.price;
+            }
+        }
+
+        res.json({ total });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'unable to calculate total', details: error.message });
+    }
+});
+
 router.delete('/:id', verifyToken, async (req, res) => {
     const userId = req.user ? req.user.userId : null;
     const productIdToRemove = req.params.productId;
@@ -93,33 +120,6 @@ router.delete('/clear', verifyToken, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'unable to clear cart', details: error.message });
-    }
-});
-
-router.get('/total', verifyToken, async (req, res) => {
-    const userId = req.user ? req.user.userId : null;
-    if (!userId) {
-        //return res.status(500).json({ error: 'user information not found in request' });
-    }
-
-    try {
-        const cart = await Cart.findOne({ user: userId });
-
-        if (!cart) {
-            return res.status(404).json({ error: 'cart not found' });
-        }
-
-        let total = 0;
-        if (cart.cartItems && Array.isArray(cart.cartItems)) {
-            for (const item of cart.cartItems) {
-                total += item.quantity * item.product.price;
-            }
-        }
-
-        res.json({ total });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'unable to calculate total', details: error.message });
     }
 });
 

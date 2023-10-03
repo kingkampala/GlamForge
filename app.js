@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const jwtAuth = require('./auth/jwt');
 const handleError = require('./auth/errhand');
+const verifyToken = require('./auth/verify');
 
 //middlewares
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(jwtAuth());
 app.use(handleError);
+app.use(verifyToken);
 
 //env
 const port = process.env.API_URI;

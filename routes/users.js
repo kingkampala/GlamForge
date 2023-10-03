@@ -4,8 +4,6 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.JWT_SECRET;
-
 router.get('/', async (req, res) => {
     try {
         const users = await User.find().select('-passwordHash -secret');
@@ -91,13 +89,15 @@ router.post('/login', async (req, res) => {
              return res.status(400).json({ error: 'invalid password' });
         }
 
+        const secret = process.env.JWT_SECRET;
+
         const token = jwt.sign(
             {
                 userId: user._id,
                 isAdmin: user.isAdmin
             },
             secret,
-            {expiresIn : '5m'}
+            {expiresIn : '30m'}
         )
 
         res.status(200).json({ success: 'login successful', user, token });

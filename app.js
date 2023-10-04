@@ -30,6 +30,7 @@ const productsRoutes = require('./routes/products');
 const orderitemsRoutes = require('./routes/orderitems');
 const ordersRoutes = require('./routes/orders');
 const cartsRoutes = require('./routes/carts');
+const paymentsRoutes = require('./routes/payments');
 
 app.use(`${port}/users`, usersRoutes);
 app.use(`${port}/categories`, categoriesRoutes);
@@ -37,6 +38,7 @@ app.use(`${port}/products`, productsRoutes);
 app.use(`${port}/orderitems`, orderitemsRoutes);
 app.use(`${port}/orders`, ordersRoutes);
 app.use(`${port}/carts`, cartsRoutes);
+app.use(`${port}/payments`, paymentsRoutes);
 
 //database
 mongoose

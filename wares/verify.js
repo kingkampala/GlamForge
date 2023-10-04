@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
         return next();
     }
 
-    const decodedToken = jwt.verify(token, secret, (err, decoded) => {
+    const decoded = jwt.verify(token, secret, (err, decoded) => {
         if (err) {
             req.user = null;
         } else {
@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
         }
         next();
     });
-    console.log('Decoded token:', decodedToken);
+    console.log('Decoded token:', decoded);
 }
 
 module.exports = verifyToken;

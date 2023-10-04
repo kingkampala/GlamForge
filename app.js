@@ -5,9 +5,9 @@ const cors = require('cors');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const jwtAuth = require('./auth/jwt');
-const handleError = require('./auth/errhand');
-const verifyToken = require('./auth/verify');
+const jwtAuth = require('./wares/jwt');
+const handleError = require('./wares/errhand');
+const verifyToken = require('./wares/verify');
 
 //middlewares
 app.use(cors());

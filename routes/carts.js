@@ -1,7 +1,7 @@
 const Cart = require('../models/cart');
 const express = require('express');
 const router = express.Router();
-const verifyToken = require('../auth/verify');
+const verifyToken = require('../wares/verify');
 
 router.post('/', verifyToken, async (req, res) => {
     const userId = req.user ? req.user.userId : null;

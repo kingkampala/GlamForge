@@ -8,7 +8,7 @@ function handleError(err, req, res, next) {
     }
 
     console.error(err);
-    return res.status(500).json({ error: { message: 'server error' } });
+    return res.status(500).json({ error: { message: 'server error', details: err.message } });
 }
 
 module.exports = handleError;

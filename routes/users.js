@@ -97,7 +97,7 @@ router.post('/login', async (req, res) => {
                 isAdmin: user.isAdmin
             },
             secret,
-            {expiresIn : '30m'}
+            {expiresIn : '10m'}
         )
 
         res.status(200).json({ success: 'login successful', user, token });

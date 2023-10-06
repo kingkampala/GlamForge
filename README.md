@@ -1,2 +1,1 @@
-# a_p_i
-standardized
+# GlamForge(a_p_i)

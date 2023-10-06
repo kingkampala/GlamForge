@@ -1,7 +1,7 @@
 {
-  "name": "a_p_i",
+  "name": "glamforge",
   "version": "1.0.0",
-  "description": "",
+  "description": "functional code glamforge api",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",

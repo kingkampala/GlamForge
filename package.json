@@ -1,7 +1,7 @@
 {
   "name": "glamforge",
   "version": "1.0.0",
-  "description": "functional code glamforge api",
+  "description": "functional nodejs codes of glamforge api",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",

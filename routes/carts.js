@@ -5,6 +5,7 @@ const verifyToken = require('../wares/verify');
 
 router.post('/', verifyToken, async (req, res) => {
     const userId = req.user ? req.user.userId : null;
+
     if (!userId) {
         //return res.status(500).json({ error: 'user information not found in request' });
     }
@@ -22,6 +23,7 @@ router.post('/', verifyToken, async (req, res) => {
         cart.cartItems = cart.cartItems || [];
         
         const existingCartItem = cart.cartItems.find(item => item.product.toString() === product);
+
         if (existingCartItem) {
             existingCartItem.quantity += quantity || 1;
         } else {

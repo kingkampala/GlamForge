@@ -15,8 +15,8 @@ function jwtAuth() {
             { url: /\/api\/categories(.*)/, methods: ['GET', 'OPTIONS'] },
             { url: /\/api\/orders(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
             { url: /\/api\/orderitems(.*)/, methods: ['GET', 'OPTIONS'] },
-            `${port}/users/login`,
-            `${port}/users/register`
+            `/users/login`,
+            `/users/register`
         ]
     })
 }

@@ -20,7 +20,7 @@ app.use(handleError);
 app.use(verifyToken);
 
 //env
-const port = process.env.API_URI;
+const port = process.env.PORT || 8000;
 const DB_URI = process.env.MONGO_URI;
 
 //routes
@@ -32,13 +32,13 @@ const ordersRoutes = require('./routes/orders');
 const cartsRoutes = require('./routes/carts');
 const paymentsRoutes = require('./routes/payments');
 
-app.use(`${port}/users`, usersRoutes);
-app.use(`${port}/categories`, categoriesRoutes);
-app.use(`${port}/products`, productsRoutes);
-app.use(`${port}/orderitems`, orderitemsRoutes);
-app.use(`${port}/orders`, ordersRoutes);
-app.use(`${port}/carts`, cartsRoutes);
-app.use(`${port}/payments`, paymentsRoutes);
+app.use(`/users`, usersRoutes);
+app.use(`/categories`, categoriesRoutes);
+app.use(`/products`, productsRoutes);
+app.use(`/orderitems`, orderitemsRoutes);
+app.use(`/orders`, ordersRoutes);
+app.use(`/carts`, cartsRoutes);
+app.use(`/payments`, paymentsRoutes);
 
 //database
 mongoose
@@ -55,6 +55,6 @@ mongoose
     });
     
 //server
-app.listen(8000, () => {
-    console.log('server is running excellently')
+app.listen(port, () => {
+    console.log(`server is running on ${port}`)
 });

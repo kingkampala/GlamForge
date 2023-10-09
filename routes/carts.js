@@ -4,7 +4,7 @@ const router = express.Router();
 const verifyToken = require('../wares/verify');
 
 router.post('/', verifyToken, async (req, res) => {
-    const userId = req.user ? req.user.userId : null;
+    const userId = req.user ? req.user._id : null;
 
     if (!userId) {
         //return res.status(500).json({ error: 'user information not found in request' });

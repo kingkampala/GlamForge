@@ -8,13 +8,13 @@ const verifyToken = (req, res, next) => {
     const token = req.header('Authorization');
 
     if (!token) {
-        req.user = null; //if no token, set req.user to null. 
+        req.user = null; //return res.status(403).json({ error: 'Token not provided' });
         return next();
     }
 
     const decoded = jwt.verify(token, secret, (err, decoded) => {
         if (err) {
-            req.user = null;
+            req.user = null; //return res.status(401).json({ error: 'Invalid token' });
         } else {
             req.user = decoded;
         }

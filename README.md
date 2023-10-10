@@ -59,9 +59,19 @@ DELETE   /users/:id             delete user
 ```
 POST     /products                      add product
 GET      /products                      get products
-GET      /products/:id                  get specific products
+GET      /products/:id                  get specific product
 GET      /products/total                get total products
 GET      /products/total-featured       get total featured products
-PUT      /products/:id                  update products
-DELETE   /products/:id                  delete products
+PUT      /products/:id                  update product
+DELETE   /products/:id                  delete product
+```
+
+**Orders**
+
+```
+POST     /orders                      add order
+GET      /orders                      get orders
+GET      /orders/:id                  get specific order
+PUT      /orders/:id                  update order
+DELETE   /orders/:id                  delete order
 ```

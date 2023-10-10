@@ -110,5 +110,5 @@ _carts routes and endpoints are still under minor construction..._
 **Payments**
 
 ```
-POST     /payments                     make payment
+POST     /payments                   make payment
 ```

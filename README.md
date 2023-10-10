@@ -15,7 +15,6 @@ This the base URL for the API, which is intended to be accessed by the applicati
 The GlamForge API implements authentication using JSON Web Tokens (JWT). In order to access and test the API endpoints, an authentication token must be obtained through the following methods:
 
 **Registration**
-
 To register a new user, make a POST request to:
 
 `https://glam-forge.onrender.com/users/register`

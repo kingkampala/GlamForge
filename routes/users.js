@@ -150,9 +150,20 @@ router.post('/register', async (req, res) => {
             country: req.body.country
         })
 
+        const secret = process.env.JWT_SECRET;
+
+        const token = jwt.sign(
+            {
+                userId: newUser._id,
+                isAdmin: newUser.isAdmin
+            },
+            secret,
+            {expiresIn : '10m'}
+        )
+
         const savedUser = await newUser.save();
 
-        res.status(200).json({ success: 'registration successful', savedUser });
+        res.status(200).json({ success: 'registration successful', savedUser, token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'server error, registration unsuccessful.', details: error.message });

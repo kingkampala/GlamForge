@@ -4,13 +4,17 @@ const router = express.Router();
 const verifyToken = require('../wares/verify');
 
 router.post('/', verifyToken, async (req, res) => {
-    const userId = req.user ? req.user._id : null;
+    const userId = req.user._id;
 
     if (!userId) {
         //return res.status(500).json({ error: 'user information not found in request' });
     }
     
     const { product, quantity } = req.body;
+
+    if (!product) {
+        return res.status(400).json({ error: 'Product information is required' });
+    }
 
     try {
         const cart = await Cart.findOne({ user: userId });

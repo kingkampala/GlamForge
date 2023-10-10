@@ -95,3 +95,15 @@ GET      /orderitems/:id                  get specific orderitem
 PUT      /orderitems/:id                  update orderitem
 DELETE   /orderitems/:id                  delete orderitem
 ```
+
+**Carts**
+
+```
+POST     /carts                      add to cart
+GET      /carts                      get cart
+GET      /carts/total                get total cart
+DELETE   /carts/:id                  delete specific cart
+DELETE   /carts/clear                delete all cart
+
+_carts routes and endpoints are still under minor construction_
+```

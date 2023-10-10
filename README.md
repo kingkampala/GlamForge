@@ -105,4 +105,4 @@ GET      /carts/total                get total cart
 DELETE   /carts/:id                  delete specific cart
 DELETE   /carts/clear                delete all cart
 ```
-_carts routes and endpoints are still under minor construction_
+_carts routes and endpoints are still under minor construction..._

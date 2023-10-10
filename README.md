@@ -75,3 +75,13 @@ GET      /orders/:id                  get specific order
 PUT      /orders/:id                  update order
 DELETE   /orders/:id                  delete order
 ```
+
+**Categories**
+
+```
+POST     /categories                      add category
+GET      /categories                      get categories
+GET      /categories/:id                  get specific category
+PUT      /categories/:id                  update category
+DELETE   /categories/:id                  delete category
+```

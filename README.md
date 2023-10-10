@@ -117,7 +117,7 @@ POST     /payments                   make payment
 ### Installation
 Follow these steps to set up the project locally and run the API on your machine.
 
-* **Prerequisites**
+**Prerequisites**
 
 Make sure you have the following software installed on your machine:
 
@@ -125,19 +125,19 @@ Make sure you have the following software installed on your machine:
 * npm (v6.0.0 or higher)
 * MongoDB (v4.0.0 or higher) - Ensure MongoDB server is running.
 
-* **Clone the Repository**
+**Clone the Repository**
 
 Clone the repository to your local machine using the following command:
 
 `git clone https://github.com/kingkampala/GlamForge.git`
 
-* **Install Dependencies**
+**Install Dependencies**
 
 Navigate to the project directory and install the necessary dependencies using npm:
 
 `npm install`
 
-* **Configure Environment Variables**
+**Configure Environment Variables**
 
 Create a `.env` file in the root of the project and set the required environment variables. For example:
 
@@ -148,7 +148,7 @@ STRIPE_KEY
 ```
 _assign the respective values of the environment variables_
 
-* **Run the API**
+**Run the API**
 
 Start the API server using the following command:
 
@@ -156,6 +156,6 @@ Start the API server using the following command:
 
 The API will run at your specified port.
 
-* **Access the API**
+**Access the API**
 
 You can now access the API using an API testing tool like Postman or Insomnia at the base URL http://localhost:${port}.

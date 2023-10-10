@@ -3,7 +3,7 @@ const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 const Payment = require('../models/payment');
 
-router.post('/charge', async (req, res) => {
+router.post('/', async (req, res) => {
   const { amount, receipt_email, source, currency } = req.body;
 
   try {

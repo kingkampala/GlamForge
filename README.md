@@ -106,3 +106,9 @@ DELETE   /carts/:id                  delete specific cart
 DELETE   /carts/clear                delete all cart
 ```
 _carts routes and endpoints are still under minor construction..._
+
+**Payments**
+
+```
+POST     /payments                     make payment
+```

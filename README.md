@@ -53,3 +53,15 @@ GET      /users/total           get total users
 PUT      /users/:id             update user
 DELETE   /users/:id             delete user
 ```
+
+**Products**
+
+```
+POST     /products                      add product
+GET      /products                      get products
+GET      /products/:id                  get specific products
+GET      /products/total                get total products
+GET      /products/total-featured       get total featured products
+PUT      /products/:id                  update products
+DELETE   /products/:id                  delete products
+```

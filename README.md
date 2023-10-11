@@ -159,3 +159,18 @@ The API will run at your specified port.
 **Access the API**
 
 You can now access the API using an API testing tool like Postman or Insomnia at your base URL http://localhost:${port}.
+
+
+### Contribution
+We welcome contributions to improve GlamForge and encourage you to submit issues and pull requests.
+
+To submit an issue, please use the GitHub issue tracker and provide detailed information about the problem or enhancement.
+If you'd like to contribute code:
+
+* Fork the repository and create your branch from `main`.
+* Make sure your code follows the existing code style and conventions.
+* Issue a pull request with a detailed description of changes.
+
+
+### License
+GlamForge is distributed under the `ISC License`. See the `LICENSE.md` file for more information.

@@ -174,3 +174,10 @@ If you'd like to contribute code:
 
 ### License
 GlamForge is distributed under the `ISC License`. See the `LICENSE.md` file for more information.
+
+
+### Author
+**Ezeanya Kampala**
+
+* Github: `github.com/kingkampala`
+* LinkedIn: `linkedin.com/in/kampala-ezeanya`

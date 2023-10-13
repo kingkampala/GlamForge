@@ -102,11 +102,11 @@ DELETE   /users/:id             delete user
 
 Test Case
 
-POST     /users/register                                                      POST     /users/login
+POST     /users/register                                                   POST     /users/login
 {                                                                          {
   "name": "Dwayne Brook",                                                    "email": "dwayne@brook.com",
   "email": "dwayne@brook.com",                                               "username": "wayne rook",
-  "username": "wayne rook",                                                  "password": "Dwayne12345Brook",
+  "username": "wayne rook",                                                  "password": "Dwayne12345Brook"
   "password": "Dwayne12345Brook",                                          }
   "mySecret": "feel free, your deepest secret is safe here.",
   "phone": "+1435678902",

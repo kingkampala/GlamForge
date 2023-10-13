@@ -4,16 +4,21 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
+        const userId = req.user._id;
+
+        const { orderItems, shippingAddress, city, country, phone, totalAmount, currency, paymentMethod } = req.body;
+
         const order = new Order({
-            user: req.body.user,
-            orderItems: req.body.orderItems,
-            shippingAddress: req.body.shippingAddress,
-            city: req.body.city,
-            country: req.body.country,
-            phone: req.body.phone,
+            orderItems,
+            shippingAddress,
+            city,
+            country,
+            phone,
             status: req.body.status,
-            totalAmount: req.body.totalAmount,
-            paymentMethod: req.body.paymentMethod,
+            totalAmount,
+            currency,
+            paymentMethod,
+            user: userId,
             createdAt: req.body.createdAt
         });
     

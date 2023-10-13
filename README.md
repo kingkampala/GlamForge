@@ -190,7 +190,16 @@ DELETE   /orders/:id                  delete order
 Test Case
 
 POST     /orders
-
+{
+    "orderItems": "652939b24e398e3f7eee6031"(orderitem id),
+    "shippingAddress": "1120 crescent avenue park, NY.",
+    "city": "New York",
+    "country": "United States",
+    "phone": "+1435678902",
+    "totalAmount": 2499.99,
+    "currency": "$",
+    "paymentMethod": "visa credit card"
+}
 ```
 
 **Carts**

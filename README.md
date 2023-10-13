@@ -116,6 +116,24 @@ POST     /users/register                                                   POST 
 }
 ```
 
+**Categories**
+
+```
+POST     /categories                      add category
+GET      /categories                      get categories
+GET      /categories/:id                  get specific category
+PUT      /categories/:id                  update category
+DELETE   /categories/:id                  delete category
+
+Test Case
+
+POST     /categories
+{
+    "name": "clothing,
+    "description": "mens"
+}
+```
+
 **Products**
 
 ```
@@ -142,31 +160,6 @@ POST     /products
 }
 ```
 
-**Orders**
-
-```
-POST     /orders                      add order
-GET      /orders                      get orders
-GET      /orders/:id                  get specific order
-PUT      /orders/:id                  update order
-DELETE   /orders/:id                  delete order
-
-Test Case
-
-POST     /orders
-
-```
-
-**Categories**
-
-```
-POST     /categories                      add category
-GET      /categories                      get categories
-GET      /categories/:id                  get specific category
-PUT      /categories/:id                  update category
-DELETE   /categories/:id                  delete category
-```
-
 **Orderitems**
 
 ```
@@ -183,6 +176,21 @@ POST     /orderitems
     "product": "65293618eb62d33c894a3b4a"(product id),
     "quantity": 2
 }
+```
+
+**Orders**
+
+```
+POST     /orders                      add order
+GET      /orders                      get orders
+GET      /orders/:id                  get specific order
+PUT      /orders/:id                  update order
+DELETE   /orders/:id                  delete order
+
+Test Case
+
+POST     /orders
+
 ```
 
 **Carts**

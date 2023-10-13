@@ -10,8 +10,7 @@ const categorySchema = mongoose.Schema({
     required: true
   },
   subcategory: {
-    type: [String],
-    required: true
+    type: [String]
   }
 }, { timestamps: true });
 

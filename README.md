@@ -150,6 +150,11 @@ GET      /orders                      get orders
 GET      /orders/:id                  get specific order
 PUT      /orders/:id                  update order
 DELETE   /orders/:id                  delete order
+
+Test Case
+
+POST     /orders
+
 ```
 
 **Categories**
@@ -170,6 +175,14 @@ GET      /orderitems                      get orderitems
 GET      /orderitems/:id                  get specific orderitem
 PUT      /orderitems/:id                  update orderitem
 DELETE   /orderitems/:id                  delete orderitem
+
+Test Case
+
+POST     /orderitems
+{
+    "product": "65293618eb62d33c894a3b4a"(product id),
+    "quantity": 2
+}
 ```
 
 **Carts**

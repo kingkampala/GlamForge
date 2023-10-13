@@ -99,6 +99,21 @@ GET      /users/:id             get specific user
 GET      /users/total           get total users
 PUT      /users/:id             update user
 DELETE   /users/:id             delete user
+
+Test Case
+
+POST     /users/register                                                      POST     /users/login
+{                                                                             {
+  "name": "Dwayne Brook",                                                       "email": "dwayne@brook.com",
+  "email": "dwayne@brook.com",                                                  "username": "wayne rook",
+  "username": "wayne rook",                                                     "password": "Dwayne12345Brook",
+  "password": "Dwayne12345Brook",                                             }
+  "mySecret": "feel free, your deepest secret is always safe here.",
+  "phone": "+1435678902",
+  "address": "1120 crescent avenue park, NY.",
+  "city": "New York",
+  "country": "United States"
+}
 ```
 
 **Products**

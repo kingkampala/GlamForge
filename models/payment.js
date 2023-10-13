@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const paymentSchema = new mongoose.Schema({
     chargeId: String,
     amount: Number,
+    receipt_email: String,
     currency: String,
     paid: Boolean,
     status: String,

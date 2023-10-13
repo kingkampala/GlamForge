@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
       chargeId: charge.id,
       amount: charge.amount,
       currency: charge.currency,
+      receipt_email: charge.receipt_email,
       paid: charge.status === 'succeeded',
       status: charge.status,
       source: JSON.stringify(charge.source),

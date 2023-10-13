@@ -217,6 +217,16 @@ _carts routes and endpoints are still under minor construction..._
 
 ```
 POST     /payments                   make payment
+
+Test Case
+
+POST     /payments
+{
+    "amount": 1725.63,
+    "currency": "usd",
+    "receipt_email": "dwayne@brook.com",
+    "source": "tok_visa"
+}
 ```
 
 

@@ -38,6 +38,53 @@ Include the user's login credentials. If authentication is successful, a JWT tok
 Once obtained, in your testing tools, include the JWT token in the `Authorization` header of subsequent requests to authenticate and access protected endpoints.
 
 
+### Installation
+Follow these steps to set up the project locally and run the API on your machine.
+
+**Prerequisites**
+
+Make sure you have the following software installed on your machine:
+
+* Node.js (v12.0.0 or higher)
+* npm (v6.0.0 or higher)
+* MongoDB (v4.0.0 or higher) - Ensure MongoDB server is running.
+
+**Clone the Repository**
+
+Clone the repository to your local machine using the following command:
+
+`git clone https://github.com/kingkampala/GlamForge.git`
+
+**Install Dependencies**
+
+Navigate to the project directory and install the necessary dependencies using npm:
+
+`npm install`
+
+**Configure Environment Variables**
+
+Create a `.env` file in the root of the project and set the required environment variables. For example:
+
+```
+MONGO_URI
+JWT_SECRET
+STRIPE_KEY
+```
+_assign the respective values of the environment variables_
+
+**Run the API**
+
+Start the API server using the following command:
+
+`npm start`
+
+The API will run at your specified port.
+
+**Access the API**
+
+You can now access the API using an API testing tool like Postman or Insomnia at your base URL http://localhost:${port}.
+
+
 ### Routes to test Endpoints
 This section provides the routes to test specific endpoints.
 
@@ -112,53 +159,6 @@ _carts routes and endpoints are still under minor construction..._
 ```
 POST     /payments                   make payment
 ```
-
-
-### Installation
-Follow these steps to set up the project locally and run the API on your machine.
-
-**Prerequisites**
-
-Make sure you have the following software installed on your machine:
-
-* Node.js (v12.0.0 or higher)
-* npm (v6.0.0 or higher)
-* MongoDB (v4.0.0 or higher) - Ensure MongoDB server is running.
-
-**Clone the Repository**
-
-Clone the repository to your local machine using the following command:
-
-`git clone https://github.com/kingkampala/GlamForge.git`
-
-**Install Dependencies**
-
-Navigate to the project directory and install the necessary dependencies using npm:
-
-`npm install`
-
-**Configure Environment Variables**
-
-Create a `.env` file in the root of the project and set the required environment variables. For example:
-
-```
-MONGO_URI
-JWT_SECRET
-STRIPE_KEY
-```
-_assign the respective values of the environment variables_
-
-**Run the API**
-
-Start the API server using the following command:
-
-`npm start`
-
-The API will run at your specified port.
-
-**Access the API**
-
-You can now access the API using an API testing tool like Postman or Insomnia at your base URL http://localhost:${port}.
 
 
 ### Contribution

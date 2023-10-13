@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
     try {
         const { email, username, password } = req.body;
         if (!email || !username || !password) {
-             return res.status(400).json({ error: 'email, username and password are needed'})
+             return res.status(401).json({ error: 'email, username and password are required'})
         }
 
         //check if user exist
@@ -109,7 +109,11 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const { email, username } = req.body;
+        const { email, username, name, password, mySecret, phone } = req.body;
+
+        if (!email || !username || !password || !name || !mySecret || !phone) {
+            return res.status(401).json({ error: 'name, email, username, password, phone and mySecret are required' })
+       }
 
         // check if email exists
         const doesEmailExist = async (email) => {
@@ -138,12 +142,12 @@ router.post('/register', async (req, res) => {
         }
 
         const newUser = new User({
-            name: req.body.name,
+            name,
             email,
             username,
             passwordHash: bcrypt.hashSync(req.body.password, 12),
-            secret: req.body.secret,
-            phone: req.body.phone,
+            mySecret,
+            phone,
             isAdmin: req.body.isAdmin,
             address: req.body.address,
             city: req.body.city,

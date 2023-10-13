@@ -7,6 +7,7 @@ const productSchema = mongoose.Schema({
     },
     brand: {
         type: String,
+        required: true,
         default: ''
     },
     description: {
@@ -15,7 +16,12 @@ const productSchema = mongoose.Schema({
     },
     price : {
         type: Number,
+        required: true,
         default:0
+    },
+    currency : {
+        type: String,
+        required: true
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,

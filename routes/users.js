@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             username: req.body.username,
             passwordHash: bcrypt.hashSync(req.body.password, 12),
-            secret: req.body.secret,
+            mySecret: req.body.mySecret,
             phone: req.body.phone,
             isAdmin: req.body.isAdmin,
             address: req.body.address,

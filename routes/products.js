@@ -9,6 +9,7 @@ router.post('/', async (req, res) => {
             brand: req.body.brand,
             description: req.body.description,
             price: req.body.price,
+            currency: req.body.currency,
             category: req.body.category,
             quantity: req.body.quantity,
             rating: req.body.rating,

@@ -126,6 +126,20 @@ GET      /products/total                get total products
 GET      /products/total-featured       get total featured products
 PUT      /products/:id                  update product
 DELETE   /products/:id                  delete product
+
+Test Case
+
+POST     /products
+{
+    "name": "V shirt",
+    "brand": "Versace",
+    "description": "top quality",
+    "price": 149.99,
+    "currency": "$",
+    "category": "650abf513b555aa29e2d3ffb"(category id),
+    "quantity": 3,
+    "featured": true or false
+}
 ```
 
 **Orders**

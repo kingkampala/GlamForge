@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 router.get('/', async (req, res) => {
     try {
-        const users = await User.find().select('-passwordHash -secret');
+        const users = await User.find().select('-passwordHash -mySecret');
         res.status(201).json(users);
     } catch (error) {
         console.error(error);
@@ -27,7 +27,7 @@ router.get('/total', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
     try {
-        const user = await User.findById(userId).select('-passwordHash -secret');
+        const user = await User.findById(userId).select('-passwordHash -mySecret');
         res.status(201).json(user);
     } catch (error) {
         console.error(error);

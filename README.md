@@ -222,7 +222,7 @@ Test Case
 
 POST     /payments
 {
-    "amount": 1725.63,
+    "amount": 1725,
     "currency": "usd",
     "receipt_email": "dwayne@brook.com",
     "source": "tok_visa"
